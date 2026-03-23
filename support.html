@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — Excusely</title>
+  <meta name="description" content="Get help with Excusely. We're here to help." />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .support-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto 80px;
+    }
+
+    .support-card {
+      background: #fff;
+      border: 1px solid var(--gray-2);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+    .support-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(10,191,163,0.2);
+    }
+
+    .support-icon {
+      width: 64px; height: 64px;
+      background: var(--gradient);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin: 0 auto 20px;
+      box-shadow: 0 8px 24px rgba(10,191,163,0.25);
+    }
+
+    .support-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .support-card p {
+      font-size: 15px;
+      color: var(--gray-4);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .support-card a.btn {
+      width: 100%;
+    }
+
+    /* FAQ */
+    .faq-section {
+      background: var(--gray-1);
+      padding: 80px 24px;
+    }
+    .faq-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .faq-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .faq-header h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin: 12px 0 12px;
+    }
+    .faq-header p {
+      color: var(--gray-4);
+      font-size: 16px;
+    }
+
+    .faq-item {
+      background: #fff;
+      border: 1px solid var(--gray-2);
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 20px 24px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      user-select: none;
+      transition: background 0.2s;
+    }
+    .faq-question:hover { background: var(--gray-1); }
+    .faq-question svg {
+      width: 20px; height: 20px;
+      color: var(--teal);
+      flex-shrink: 0;
+      transition: transform 0.3s;
+    }
+    .faq-item.open .faq-question svg {
+      transform: rotate(45deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.2s;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 300px;
+    }
+    .faq-answer-inner {
+      padding: 0 24px 20px;
+      font-size: 15px;
+      color: var(--gray-4);
+      line-height: 1.7;
+    }
+    .faq-answer-inner a {
+      color: var(--teal);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .faq-answer-inner a:hover { text-decoration: underline; }
+
+    /* Contact section */
+    .contact-section {
+      padding: 80px 24px;
+      background: var(--dark);
+      text-align: center;
+    }
+    .contact-inner {
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .contact-inner h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -1px;
+      margin: 16px 0 16px;
+    }
+    .contact-inner p {
+      color: var(--gray-4);
+      font-size: 17px;
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+    .email-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(10,191,163,0.1);
+      border: 1px solid rgba(10,191,163,0.25);
+      border-radius: 50px;
+      padding: 14px 28px;
+      color: var(--teal);
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .email-chip:hover {
+      background: rgba(10,191,163,0.18);
+      transform: translateY(-2px);
+    }
+    .email-chip svg {
+      width: 18px; height: 18px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Excusely logo" />
+      <span>Excusely</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="support.html" class="active">Support</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="index.html#download" class="btn btn-primary">Download</a>
+    </div>
+    <div class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ── Page Header ── -->
+  <header class="page-header">
+    <div class="tag" style="margin-bottom: 20px;">Help Center</div>
+    <h1>Support</h1>
+    <p>We're here to help. Find answers below or reach out directly — we'll get back to you quickly.</p>
+  </header>
+
+  <!-- ── Support Cards ── -->
+  <section style="padding: 72px 24px 0; background: var(--gray-1);">
+    <div class="support-grid">
+      <div class="support-card">
+        <div class="support-icon">✉️</div>
+        <h3>Email Support</h3>
+        <p>Send us a message and we'll get back to you as soon as possible. We love hearing from users.</p>
+        <a href="mailto:johannes@aplas.no" class="btn btn-primary">Send an Email</a>
+      </div>
+      <div class="support-card">
+        <div class="support-icon">📱</div>
+        <h3>App Store</h3>
+        <p>Leave a review, report an issue, or manage your subscription directly in the App Store.</p>
+        <a href="https://apps.apple.com" target="_blank" rel="noopener" class="btn btn-outline">Open App Store</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FAQ ── -->
+  <section class="faq-section">
+    <div class="faq-inner">
+      <div class="faq-header">
+        <div class="tag">FAQ</div>
+        <h2>Frequently Asked Questions</h2>
+        <p>Quick answers to the questions we hear most.</p>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          How do I cancel my Excusely Pro subscription?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            You can manage or cancel your subscription in your iPhone's Settings app. Go to <strong>Settings → [Your Name] → Subscriptions</strong>, find Excusely, and tap Cancel Subscription. Make sure to cancel at least 24 hours before your renewal date to avoid being charged for the next period.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          My data isn't syncing across my devices. What should I do?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Excusely uses iCloud to sync your data. Make sure you're signed in to the same Apple ID on all devices and that iCloud Drive is enabled in <strong>Settings → [Your Name] → iCloud</strong>. A stable internet connection is required for sync to work. If issues persist, <a href="mailto:johannes@aplas.no">contact us</a>.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Is my data private? What do you collect?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            We take privacy seriously. We only collect an anonymous Apple ID to sync your data — no name, email, or personal info. We don't sell or share your data. Read our full <a href="privacy.html">Privacy Policy</a> for details.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          Can I get a refund?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            All purchases are handled by Apple through the App Store. To request a refund, visit <strong>reportaproblem.apple.com</strong> and select your Excusely purchase. Apple handles all billing and refund decisions.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          How do I create a custom excuse?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Tap the + button in the app to create a new custom excuse. You can add a title, script, use placeholders like [name] or [place], and assign it to a category and a person. Custom excuses are synced across all your devices via iCloud.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">
+          What's included in Excusely Pro?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">
+            Excusely Pro unlocks the full excuse library, unlimited custom excuses, advanced usage history, event planning features, and more. It's available as an auto-renewing subscription with a 7-day free trial. You can manage it anytime in your App Store account settings.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ── -->
+  <section class="contact-section">
+    <div class="contact-inner">
+      <div class="tag" style="margin-bottom: 20px;">Still need help?</div>
+      <h2>Get in touch</h2>
+      <p>Can't find what you're looking for? Drop us an email and we'll sort it out.</p>
+      <a href="mailto:johannes@aplas.no" class="email-chip">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        johannes@aplas.no
+      </a>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo-row">
+            <img src="logo.png" alt="Excusely" />
+            <span class="name">Excusely</span>
+          </div>
+          <p>Your personal excuse assistant. Always an excuse ready — for every awkward moment life throws at you.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>App</h4>
+            <a href="https://apps.apple.com" target="_blank">App Store</a>
+            <a href="support.html">Support</a>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Excusely. All rights reserved.</span>
+        <span>
+          <a href="privacy.html">Privacy</a> &nbsp;·&nbsp;
+          <a href="terms.html">Terms</a> &nbsp;·&nbsp;
+          <a href="support.html">Support</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav toggle
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(q => {
+      q.addEventListener('click', () => {
+        const item = q.closest('.faq-item');
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+</body>
+</html>

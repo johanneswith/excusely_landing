@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — Excusely</title>
+  <meta name="description" content="Excusely Privacy Policy — We are committed to your privacy." />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Excusely logo" />
+      <span>Excusely</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy.html" class="active">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="index.html#download" class="btn btn-primary">Download</a>
+    </div>
+    <div class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ── Page Header ── -->
+  <header class="page-header">
+    <div class="tag" style="margin-bottom: 20px;">Legal</div>
+    <h1>Privacy Policy</h1>
+    <p>Your privacy is a priority. Here's exactly what we collect — and what we don't.</p>
+  </header>
+
+  <!-- ── Content ── -->
+  <main class="content-body">
+    <span class="last-updated">Last updated: January 2025</span>
+
+    <h2>Our Commitment to Privacy</h2>
+    <p>Excusely is designed with your privacy as a priority. This policy describes how we handle information when you use our app. We are committed to being transparent about our practices.</p>
+
+    <h2>What We Collect</h2>
+    <p>We collect only the minimal information necessary to provide our service: your Apple ID (a unique anonymous identifier) to sync your data across devices. We do not collect your name, email address, or any personal identifying information unless you explicitly provide it.</p>
+
+    <h2>What We Don't Collect</h2>
+    <p>We do not collect location data, contacts, browsing history, microphone input, camera data, or any other sensitive information. We do not sell, rent, or share your personal data with third parties for marketing purposes.</p>
+
+    <h2>iCloud Sync</h2>
+    <p>Your excuses, scripts, usage history, and preferences are stored using Apple's iCloud and CloudKit services. This data is tied to your Apple ID and syncs securely across your devices. Apple's privacy policy governs how this data is stored and protected.</p>
+
+    <h2>Questions?</h2>
+    <p>If you have any questions or concerns about this Privacy Policy, please visit our <a href="support.html">Support page</a> and get in touch.</p>
+  </main>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo-row">
+            <img src="logo.png" alt="Excusely" />
+            <span class="name">Excusely</span>
+          </div>
+          <p>Your personal excuse assistant. Always an excuse ready — for every awkward moment life throws at you.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>App</h4>
+            <a href="https://apps.apple.com" target="_blank">App Store</a>
+            <a href="support.html">Support</a>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Excusely. All rights reserved.</span>
+        <span>
+          <a href="privacy.html">Privacy</a> &nbsp;·&nbsp;
+          <a href="terms.html">Terms</a> &nbsp;·&nbsp;
+          <a href="support.html">Support</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+  </script>
+</body>
+</html>

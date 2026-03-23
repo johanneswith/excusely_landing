@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Excusely — Always an Excuse Ready</title>
+  <meta name="description" content="Excusely gives you instant access to excuses for real-life situations, so you never have to sit there overthinking what to say." />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="logo.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ── Hero ── */
+    .hero {
+      background: var(--dark);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 140px 24px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(10,191,163,0.12) 0%, transparent 70%);
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,107,107,0.10) 0%, transparent 70%);
+      bottom: -100px; right: -100px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 760px;
+    }
+
+    .hero-icon {
+      width: 96px;
+      height: 96px;
+      border-radius: 24px;
+      margin: 0 auto 32px;
+      box-shadow: 0 16px 56px rgba(10,191,163,0.35);
+      display: block;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 7vw, 80px);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.05;
+      letter-spacing: -2.5px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero p {
+      font-size: clamp(17px, 2.5vw, 20px);
+      color: var(--gray-4);
+      max-width: 520px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+    }
+
+    .btn-appstore {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #fff;
+      color: var(--dark);
+      padding: 14px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 15px;
+      transition: all 0.2s;
+      box-shadow: 0 4px 24px rgba(255,255,255,0.15);
+    }
+    .btn-appstore:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(255,255,255,0.2);
+    }
+    .btn-appstore svg {
+      width: 20px; height: 20px;
+    }
+
+    .hero-badges {
+      display: flex;
+      gap: 24px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .hero-badge {
+      color: var(--gray-4);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .hero-badge svg {
+      color: var(--teal);
+      width: 16px; height: 16px;
+    }
+
+    /* ── Social Proof Bar ── */
+    .proof-bar {
+      background: var(--dark-2);
+      padding: 28px 24px;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .proof-bar-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+    .proof-item {
+      text-align: center;
+    }
+    .proof-item .number {
+      font-size: 28px;
+      font-weight: 800;
+      background: var(--gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .proof-item .label {
+      font-size: 13px;
+      color: var(--gray-4);
+      font-weight: 500;
+    }
+    .proof-divider {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* ── Features ── */
+    .features {
+      background: var(--gray-1);
+      padding: 96px 24px;
+    }
+    .features-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 72px;
+    }
+    .features-header h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin: 16px 0 16px;
+    }
+    .features-header p {
+      font-size: 17px;
+      color: var(--gray-4);
+      line-height: 1.7;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .feature-card {
+      background: #fff;
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      border: 1px solid var(--gray-2);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--gradient);
+      transform: scaleX(0);
+      transition: transform 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(10,191,163,0.15);
+    }
+    .feature-card:hover::after {
+      transform: scaleX(1);
+    }
+
+    .feature-icon {
+      width: 52px; height: 52px;
+      border-radius: 16px;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
+
+    .feature-card h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      letter-spacing: -0.3px;
+    }
+    .feature-card p {
+      font-size: 15px;
+      color: var(--gray-4);
+      line-height: 1.7;
+    }
+
+    /* ── How It Works ── */
+    .how {
+      padding: 96px 24px;
+      background: #fff;
+    }
+    .how-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .how-header {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto 72px;
+    }
+    .how-header h2 {
+      font-size: clamp(32px, 5vw, 48px);
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin: 16px 0 16px;
+    }
+    .how-header p {
+      font-size: 17px;
+      color: var(--gray-4);
+      line-height: 1.7;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 32px; left: 15%; right: 15%;
+      height: 2px;
+      background: var(--gradient);
+      opacity: 0.25;
+    }
+
+    .step {
+      text-align: center;
+      padding: 0 24px;
+      position: relative;
+    }
+
+    .step-number {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--gradient);
+      color: #fff;
+      font-size: 22px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      box-shadow: 0 8px 24px rgba(10,191,163,0.3);
+    }
+
+    .step h3 {
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .step p {
+      font-size: 15px;
+      color: var(--gray-4);
+      line-height: 1.7;
+    }
+
+    /* ── CTA Section ── */
+    .cta-section {
+      background: var(--dark);
+      padding: 100px 24px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 50%, rgba(10,191,163,0.12), transparent);
+    }
+    .cta-content {
+      position: relative;
+      z-index: 1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .cta-content h2 {
+      font-size: clamp(32px, 5vw, 54px);
+      font-weight: 900;
+      color: #fff;
+      letter-spacing: -1.5px;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+    .cta-content p {
+      font-size: 18px;
+      color: var(--gray-4);
+      margin-bottom: 40px;
+      line-height: 1.7;
+    }
+
+    /* ── Quote Strip ── */
+    .quote-strip {
+      background: linear-gradient(135deg, #0ABFA3 0%, #FF6B6B 100%);
+      padding: 72px 24px;
+      text-align: center;
+    }
+    .quote-strip blockquote {
+      font-size: clamp(22px, 4vw, 36px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.5px;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.4;
+    }
+    .quote-strip cite {
+      display: block;
+      margin-top: 16px;
+      font-size: 15px;
+      font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      font-style: normal;
+    }
+
+    @media (max-width: 768px) {
+      .steps::before { display: none; }
+      .proof-divider { display: none; }
+      .steps { grid-template-columns: 1fr; gap: 48px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="logo.png" alt="Excusely logo" />
+      <span>Excusely</span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="support.html">Support</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
+      <li><a href="terms.html">Terms</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="#download" class="btn btn-primary">Download</a>
+    </div>
+    <div class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ── Hero ── -->
+  <section class="hero" id="download">
+    <div class="hero-content">
+      <img src="logo.png" alt="Excusely" class="hero-icon" />
+      <div class="tag" style="margin-bottom: 24px;">📱 Available on the App Store</div>
+      <h1>Always an<br/><em>excuse ready.</em></h1>
+      <p>Life happens. Plans change. You run late. Sometimes you just don't want to go. Excusely gives you instant access to excuses for real-life situations — no overthinking required.</p>
+      <div class="hero-buttons">
+        <a href="https://apps.apple.com" class="btn-appstore" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          Download on the App Store
+        </a>
+      </div>
+      <div class="hero-badges">
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Free to download
+        </div>
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          iOS 17+
+        </div>
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          iCloud Sync
+        </div>
+        <div class="hero-badge">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          Pro subscription available
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Social Proof ── -->
+  <div class="proof-bar">
+    <div class="proof-bar-inner">
+      <div class="proof-item">
+        <div class="number">1000+</div>
+        <div class="label">Excuses in Library</div>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-item">
+        <div class="number">18</div>
+        <div class="label">Languages Supported</div>
+      </div>
+      <div class="proof-divider"></div>
+      <div class="proof-item">
+        <div class="number">∞</div>
+        <div class="label">Awkward Moments Escaped</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Features ── -->
+  <section class="features">
+    <div class="features-header">
+      <div class="tag">Features</div>
+      <h2>More than just a list of excuses</h2>
+      <p>Your personal excuse assistant — helping you find, send, track, and plan excuses for everyday life.</p>
+    </div>
+    <div class="features-grid container">
+      <div class="feature-card">
+        <div class="feature-icon">📚</div>
+        <h3>Huge Excuse Library</h3>
+        <p>Browse a massive, curated collection of excuses organized by situation — being late, cancelling plans, avoiding events, and more.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👥</div>
+        <h3>Assign to People</h3>
+        <p>Assign specific excuses to contacts so you always know what you've told who. Stay consistent across all your relationships.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📊</div>
+        <h3>Usage History</h3>
+        <p>Track every excuse you've sent. Never accidentally repeat yourself — know exactly what was said, to whom, and when.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">✍️</div>
+        <h3>Custom Excuses</h3>
+        <p>Create your own personal excuse scripts with customizable placeholders. Tailor every excuse to fit the situation perfectly.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📅</div>
+        <h3>Plan Ahead</h3>
+        <p>Schedule excuses around upcoming events. Never be caught off guard — have your reasons ready before you even need them.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">☁️</div>
+        <h3>iCloud Sync</h3>
+        <p>Everything syncs seamlessly across all your Apple devices using iCloud. Your excuse history is always with you, securely.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Quote Strip ── -->
+  <section class="quote-strip">
+    <blockquote>
+      "The problem isn't just coming up with an excuse — it's remembering what you said, who you said it to, and making sure it still makes sense later."
+      <cite>— Why Excusely exists</cite>
+    </blockquote>
+  </section>
+
+  <!-- ── How It Works ── -->
+  <section class="how">
+    <div class="how-inner">
+      <div class="how-header">
+        <div class="tag">How It Works</div>
+        <h2>Respond fast, every time</h2>
+        <p>Three steps between you and the perfect excuse.</p>
+      </div>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Pick your situation</h3>
+          <p>Browse excuses by category — running late, cancelling, avoiding, rescheduling, and more.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Personalize it</h3>
+          <p>Fill in the blanks, assign it to a person, and make it feel natural and believable.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Send with confidence</h3>
+          <p>Copy, share, or save. Track what you sent and to who so you always stay consistent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA ── -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <h2>Your excuse assistant,<br/>right in your pocket.</h2>
+      <p>Cancel without stress. Explain being late. Avoid awkward situations. Respond quickly without thinking too much. Excusely makes it effortless.</p>
+      <a href="https://apps.apple.com" class="btn-appstore" target="_blank" rel="noopener" style="margin: 0 auto;">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+        Download Free on App Store
+      </a>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo-row">
+            <img src="logo.png" alt="Excusely" />
+            <span class="name">Excusely</span>
+          </div>
+          <p>Your personal excuse assistant. Always an excuse ready — for every awkward moment life throws at you.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>App</h4>
+            <a href="https://apps.apple.com" target="_blank">App Store</a>
+            <a href="support.html">Support</a>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="privacy.html">Privacy Policy</a>
+            <a href="terms.html">Terms &amp; Conditions</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2025 Excusely. All rights reserved.</span>
+        <span>
+          <a href="privacy.html">Privacy</a> &nbsp;·&nbsp;
+          <a href="terms.html">Terms</a> &nbsp;·&nbsp;
+          <a href="support.html">Support</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggle = document.getElementById('navToggle');
+    const links = document.getElementById('navLinks');
+    toggle.addEventListener('click', () => links.classList.toggle('open'));
+  </script>
+</body>
+</html>
